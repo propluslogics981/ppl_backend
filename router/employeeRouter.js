@@ -6,8 +6,13 @@ import {
     getAllEmployee
 
 } from '../controller/employeeController.js'
+import {userLogin} from '../controller/loginController.js'
 
 const router = express.Router()
+
+//login roter
+
+router.post('/login',userLogin)
 
 //Add employee
 
