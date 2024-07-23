@@ -1,12 +1,14 @@
 import productModel from "../models/productModel.js"
 
 export const createProduct = async (req, res) => {
-    const { productName, categoryId, buyDate, ram, rom, gen, serialNo } = req.body
+   
+    const { productName, categoryId, buyDate,productDetails, serialNo } = req.body
     if (!productName || !categoryId || !buyDate || !serialNo) {
         return res.status(400).json({
             message: "Please enter  data"
         })
     }
+    console.log(productDetails," productDetails");
     try {
         const find = await productModel.findOne({
             
@@ -25,11 +27,11 @@ export const createProduct = async (req, res) => {
             productName,
             categoryId,
             buyDate,
-            ram,
-            rom,
-            gen,
-            serialNo
+            productDetails,
+            serialNo,
+            
         })
+        console.log(createPrdouct,"loo");
         res.status(201).json({
             message: "success",
             error: false,
@@ -150,12 +152,12 @@ export const editProduct = async (req, res, next) => {
 
         // Extract data from the request body
         const {
-            productName, categoryId, buyDate, ram, rom, gen, serialNo
+            productName, categoryId, buyDate, productDetails,serialNo
         } = req.body;
 
         // Build an object for updating the About document
         const updateData = {
-            productName, categoryId, buyDate, ram, rom, gen, serialNo
+            productName, categoryId, buyDate, productDetails,serialNo
 
 
         };

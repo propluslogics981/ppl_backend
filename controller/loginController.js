@@ -17,8 +17,10 @@ const userLogin=async(req,res)=>{
     try{
        if (userEmail==email && userPassword==password){
         return res.status(200).json({
-            message:"login successfull p",
-            data:userEmail
+            message:"Successfully login",
+            data:userEmail,
+            error:false
+
         })
         
        }else{

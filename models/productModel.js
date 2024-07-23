@@ -15,18 +15,10 @@ const produtSchema = new Schema({
         type: Date,
         required: true
     },
-    ram:{
-        type: String,
-        
-    },
-    rom:{
-        type: String,
-     
-    },
-    gen:{
-        type: String,
-       
-    },
+   productDetails:[{
+    type: Schema.Types.Mixed,
+
+}],
     serialNo:{
         type: String,
         required: true
