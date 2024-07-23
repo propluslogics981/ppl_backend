@@ -1,4 +1,4 @@
-
+import generateToken from "../utils/genarateToken.js"
 
 const userLogin=async(req,res)=>{
     const userEmail='hr@proplusLogics.com'
@@ -16,9 +16,13 @@ const userLogin=async(req,res)=>{
     }
     try{
        if (userEmail==email && userPassword==password){
+
+        const token=generateToken(userEmail)
+
         return res.status(200).json({
             message:"Successfully login",
             data:userEmail,
+            token,
             error:false
 
         })

@@ -3,6 +3,7 @@ import departmentModel from "../models/departmentModel.js"
 export const createDepartment = async (req, res) => {
     console.log(req.body,"body");
     const { department } = req.body
+    console.log(department,"department");
     if (!department) {
         return res.status(400).json({
             message: "Please enter your department"
@@ -12,6 +13,7 @@ export const createDepartment = async (req, res) => {
         const find = await departmentModel.findOne({
             department: { $regex: new RegExp(department, 'i') }
         })
+        console.log(find,"find");
         if (find) {
             res.status(409).json({
                 message: `${department} Already exists`
