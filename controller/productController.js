@@ -57,7 +57,7 @@ export const getAllProduct = async (req, res) => {
         if (!search) {
             getlength = await productModel.countDocuments();
             getdata = await productModel
-                .find()
+                .find({isActive: true})
 
                 .populate({ path: 'categoryId', select: 'categoryName' })
 
@@ -71,11 +71,12 @@ export const getAllProduct = async (req, res) => {
             };
             getlength = await productModel.find(searchCriteria).countDocuments();
             getdata = await productModel
-                .find(searchCriteria)
+                .find(searchCriteria).where({isActive: true})
 
                 .populate({ path: 'categoryId', select: 'categoryName' })
 
                 .exec();
+                console.log(getdata,"loo");
         }
 
         res.status(200).json({

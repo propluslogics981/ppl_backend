@@ -55,7 +55,8 @@ export const getAllEmployee = async (req, res, next) => {
         if (!search) {
             getlength = await employeeModel.countDocuments();
             getdata = await employeeModel
-                .find()
+                .find({
+                    isActive: true})
                
                 .populate({ path: 'departmentId', select: 'department' })
                 .populate({ path: 'subDepartmentId', select: 'subDepartment' })
@@ -70,7 +71,7 @@ export const getAllEmployee = async (req, res, next) => {
             };
             getlength = await employeeModel.find(searchCriteria).countDocuments();
             getdata = await employeeModel
-                .find(searchCriteria)
+                .find(searchCriteria).where({isActive: true})
                
                 .populate({ path: 'departmentId', select: 'department' })
                 .populate({ path: 'subDepartmentId', select: 'subDepartment' })
